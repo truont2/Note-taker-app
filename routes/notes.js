@@ -58,6 +58,7 @@ notes.delete('/:id', (req, res) => {
                 res.json(`Note removed successfully 🚀`)
             }
         }
+        res.send('Note not found');
     } else {
         res.status(400).send('Note ID not provided');
     }
