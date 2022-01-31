@@ -48,6 +48,7 @@ notes.post('/', (req,res) => {
 });
 
 notes.delete('/:id', (req, res) => {
+    console.log("delete request");
     if(req.params.id) {
         console.info(`${req.method} request received to remove a note`)
         const noteId = req.params.id;
@@ -58,7 +59,6 @@ notes.delete('/:id', (req, res) => {
                 res.json(`Note removed successfully 🚀`)
             }
         }
-        res.send('Note not found');
     } else {
         res.status(400).send('Note ID not provided');
     }
