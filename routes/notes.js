@@ -52,9 +52,10 @@ notes.delete('/:id', (req, res) => {
     if(req.params.id) {
         console.info(`${req.method} request received to remove a note`)
         const noteId = req.params.id;
-        for(let i = 0; i < noteList.length; i++) {
-            const currentId = noteList[i];
+        for(let k = 0; k < noteList.length; k++) {
+            const currentId = noteList[k];
             if(currentId.id === noteId) {
+                console.log("matching id");
                 readAndDelete(currentId.id, './db/db.json')
                 res.json(`Note removed successfully 🚀`)
             }
