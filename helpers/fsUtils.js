@@ -38,14 +38,10 @@ const readAndDelete = (content, file) => {
     if(error){
       console.error(error);
     } else {
-      console.log("what we want to delete");
-      console.log(content);
       const parsedData = JSON.parse(data);
       const newData = parsedData.filter((note) => {
         return note.id !== content;
       })
-      console.log("supposed new array");
-      console.log(newData);
       writeToFile(file, newData);
       }
       
