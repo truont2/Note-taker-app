@@ -1,3 +1,5 @@
+// routes folder containing all the routes and server request tha will me made
+
 const notes = require("express").Router();
 const noteList = require('../db/db.json');
 const { v4: uuidv4 } = require('uuid');
@@ -8,6 +10,7 @@ notes.get('/', (req, res) => {
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
+// get request when a user tries to view a already created note
 notes.get('/:id', (req, res) => {
     if(req.params.id) {
         console.info(`${req.method} request received to get a single note`)
@@ -25,7 +28,7 @@ notes.get('/:id', (req, res) => {
     }
 });
         
-
+// post request to upload new notes to db.json to store
 notes.post('/', (req,res) => {
     console.log(req.body);
 
@@ -47,26 +50,19 @@ notes.post('/', (req,res) => {
     
 });
 
+// delete request allowing users to specifically delete notes of their choice
 notes.delete('/:id', (req, res) => {
-    console.log("delete request");
     const notes = require('../db/db.json');
     if(req.params.id) {
         console.info(`${req.method} request received to remove a note`)
         const noteId = req.params.id;
-        console.log(noteId);
-        console.log(notes.length);
-        // no neeed for loop
-        // for(let k = 0; k < notes.length; k++) {
-        //     const currentId = notes[k];
-        //     if(currentId.id === noteId) {
-                console.log("matching id");
-                readAndDelete(noteId, 'db/db.json')
-                res.json(`Note removed successfully 🚀`)
-            // }
-        // }
+        console.log("matching id");
+        readAndDelete(noteId, 'db/db.json')
+        res.json(`Note removed successfully 🚀`)
     } else {
         res.status(400).send('Note ID not provided');
     }
 });
 
+// exports the requests to be utilized in other files
 module.exports = notes;

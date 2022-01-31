@@ -9,6 +9,8 @@ const readFromFile = util.promisify(fs.readFile);
  *  @param {object} content The content you want to write to the file.
  *  @returns {void} Nothing
  */
+
+// function used to update a specified file with the content that is run through
 const writeToFile = (destination, content) =>
   fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
     err ? console.error(err) : console.info(`\nData written to ${destination}`)
@@ -20,6 +22,9 @@ const writeToFile = (destination, content) =>
  *  @param {string} file The path to the file you want to save to.
  *  @returns {void} Nothing
  */
+
+// function reads a specified file and updates its content
+// adds on the new note we created to the array
 const readAndAppend = (content, file) => {
   fs.readFile(file, 'utf8', (err, data) => {
     if (err) {
@@ -32,9 +37,10 @@ const readAndAppend = (content, file) => {
   });
 };
 
-// content = id of the note we are trying to delete
+// fucntion reads and updates the file contents by removing the id we pass though
+// takes in the id of the note we want to remove
+// the array is filtered for that element with the specified id and the function updates the file to contain notes other than the one we passed through
 const readAndDelete = (content, file) => {
-  console.log("delete function");
   fs.readFile(file, 'utf-8', (error, data) => {
     if(error){
       console.error(error);

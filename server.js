@@ -1,3 +1,4 @@
+// download express and path to build server
 const express = require("express");
 const path = require("path");
 
@@ -6,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 const api = require('./routes/index');
 
-// middleware
+// middleware for processing data and initializing server requests
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api', api);
