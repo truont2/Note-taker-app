@@ -38,7 +38,7 @@ notes.post('/', (req,res) => {
             id: uuidv4()
         };
 
-        readAndAppend(newNote, './db/db.json');
+        readAndAppend(newNote, 'db/db.json');
         res.json(`Note added successfully 🚀`);
     } else {
         res.error('Error in adding the notes')
@@ -56,7 +56,7 @@ notes.delete('/:id', (req, res) => {
             const currentId = noteList[k];
             if(currentId.id === noteId) {
                 console.log("matching id");
-                readAndDelete(currentId.id, './db/db.json')
+                readAndDelete(currentId.id, 'db/db.json')
                 res.json(`Note removed successfully 🚀`)
             }
         }

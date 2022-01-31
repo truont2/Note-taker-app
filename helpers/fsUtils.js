@@ -34,7 +34,7 @@ const readAndAppend = (content, file) => {
 
 // content = id of the note we are trying to delete
 const readAndDelete = (content, file) => {
-  console.log("delete fucntion");
+  console.log("delete function");
   fs.readFile(file, 'utf-8', (error, data) => {
     if(error){
       console.error(error);
