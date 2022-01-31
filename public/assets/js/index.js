@@ -33,6 +33,7 @@ const getNotes = () =>
     },
   });
 
+  // does a post request to the route api/notes
 const saveNote = (note) =>
   fetch('/api/notes', {
     method: 'POST',
